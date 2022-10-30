@@ -1,23 +1,15 @@
+from api.models import Category, Genre, Review, Title
+from api.serializers import (CategorySerializer, CommentsSerializer,
+                             GenreSerializer, ReviewSerializer,
+                             TitleSerializer)
 from django.db.models import Avg
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters
-from rest_framework import mixins
-from rest_framework import viewsets
+from rest_framework import filters, mixins, viewsets
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from users.permisions import IsAdminOrReadOnly, IsAuthorOrAdminOrModerator
 
-from api.models import Category
-from api.models import Genre
-from api.models import Review
-from api.models import Title
-from api.serializers import CategorySerializer
-from api.serializers import CommentsSerializer
-from api.serializers import GenreSerializer
-from api.serializers import ReviewSerializer
-from api.serializers import TitleSerializer
-from users.permisions import IsAdminOrReadOnly
-from users.permisions import IsAuthorOrAdminOrModerator
 from .filters import TitlesFilter
 
 

@@ -1,9 +1,7 @@
-from django.urls import include
-from django.urls import path
+from django.urls import include, path
 from rest_framework.routers import DefaultRouter
-
 from users import views
-from users.views import get_jwt_token, UsersViewSet
+from users.views import UsersViewSet, get_jwt_token
 
 v1_router = DefaultRouter()
 v1_router.register(r'users', UsersViewSet, basename='users')
