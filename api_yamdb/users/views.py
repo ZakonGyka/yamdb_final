@@ -8,11 +8,11 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.tokens import AccessToken
-
-from api_yamdb import settings
 from users.permisions import IsAdmin
 from users.serializers import (CheckConfirmationCodeSerializer,
                                EmailSerializer, UserForAdminSerializer)
+
+from api_yamdb import settings
 
 User = get_user_model()
 
