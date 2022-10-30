@@ -1,6 +1,7 @@
-from api.models import Category, Comments, Genre, Review, Title
 from django.shortcuts import get_object_or_404
 from rest_framework import serializers
+
+from api.models import Category, Comments, Genre, Review, Title
 
 
 class ReviewSerializer(serializers.ModelSerializer):
