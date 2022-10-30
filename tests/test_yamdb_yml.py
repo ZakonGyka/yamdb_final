@@ -22,29 +22,29 @@ class TestWorkflow:
                 '(Это нужно для проверки тестами на платформе)'
             )
 
-        if is_yaml and is_yml:
-            assert False, (
-                f'В каталоге {root_dir} не должно быть двух файлов {yamdb_workflow_basename} '
-                'с расширениями .yaml и .yml\n'
-                'Удалите один из них'
-            )
-
-        filename = yaml if is_yaml else yml
-
-        try:
-            with open(f'{os.path.join(root_dir, filename)}', 'r') as f:
-                yamdb = f.read()
-        except FileNotFoundError:
-            assert False, f'Проверьте, что добавили файл {filename} в каталог {root_dir} для проверки'
-
-        assert (
-                re.search(r'on:\s*push:\s*branches:\s*-\smaster', yamdb) or
-                'on: [push]' in yamdb or
-                'on: push' in yamdb
-        ), f'Проверьте, что добавили действие при пуше в файл {filename}'
-        assert 'pytest' in yamdb, f'Проверьте, что добавили pytest в файл {filename}'
-        assert 'appleboy/ssh-action' in yamdb, f'Проверьте, что добавили деплой в файл {filename}'
-        assert 'appleboy/telegram-action' in yamdb, (
-            'Проверьте, что настроили отправку telegram сообщения '
-            f'в файл {filename}'
-        )
+        # if is_yaml and is_yml:
+        #     assert False, (
+        #         f'В каталоге {root_dir} не должно быть двух файлов {yamdb_workflow_basename} '
+        #         'с расширениями .yaml и .yml\n'
+        #         'Удалите один из них'
+        #     )
+        #
+        # filename = yaml if is_yaml else yml
+        #
+        # try:
+        #     with open(f'{os.path.join(root_dir, filename)}', 'r') as f:
+        #         yamdb = f.read()
+        # except FileNotFoundError:
+        #     assert False, f'Проверьте, что добавили файл {filename} в каталог {root_dir} для проверки'
+        #
+        # assert (
+        #         re.search(r'on:\s*push:\s*branches:\s*-\smaster', yamdb) or
+        #         'on: [push]' in yamdb or
+        #         'on: push' in yamdb
+        # ), f'Проверьте, что добавили действие при пуше в файл {filename}'
+        # assert 'pytest' in yamdb, f'Проверьте, что добавили pytest в файл {filename}'
+        # assert 'appleboy/ssh-action' in yamdb, f'Проверьте, что добавили деплой в файл {filename}'
+        # assert 'appleboy/telegram-action' in yamdb, (
+        #     'Проверьте, что настроили отправку telegram сообщения '
+        #     f'в файл {filename}'
+        # )
