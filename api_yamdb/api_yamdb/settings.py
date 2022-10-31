@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import datetime
 import os
+
 import dotenv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
