@@ -12,8 +12,6 @@ services:
   # web container
   web:
     image: zakongyka/yamdb_final:latest
-#    build:
-#      context: ../api_yamdb
     restart: always
     volumes:
       - static_value:/app/static/
