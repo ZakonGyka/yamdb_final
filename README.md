@@ -8,9 +8,9 @@
 - DRF
 - PosgreSQL
 - Docker
-- =)
 ## Установка
 - Склонировать репозиторий
+- В файле docker-compose.yaml заменить в web image на build для создания локального образа
 - Создать образ проекта: 
 ```Python
 docker build -t <логин dockerhub>/<имя проекта> .
@@ -23,16 +23,24 @@ docker build -t <логин dockerhub>/<имя проекта> .
 docker-compose up
 ```
 - Проверить, что проект запустился
-
 - Создать файл .env  в директории infra/, указать следующие переменные:
   - DB_ENGINE=django.db.backends.postgresql
   - DB_NAME= # название БД\ POSTGRES_USER= # ваше имя пользователя
   - POSTGRES_PASSWORD= # пароль для доступа к БД
   - DB_HOST=db
   - DB_PORT=5432\
-- Находясь в директори с файлом docker-compose.yaml запустить команду для развертывания проекта: $ docker-compose up
-- Примените миграции командой: $ winpty docker-compose exec web python manage.py migrate
-- Создайте учетную запись администратора: $ winpty docker-compose exec web python manage.py createsuperuser
+- Отправить созданный образ на docker.hub
+- Заменить файле docker-compose.yaml заменить в web build на image для использования образа с репозитория docker.hub
+- Настроить сервер (пример Linux/Ubunta):
+  - обновите индекс пакетов: $ sudo apt update 
+  - установите обновления: $ sudo apt upgrade -y
+  - установите python, venv, git: $ sudo apt install python3-pip python3-venv git -y
+  - Копируйте файл docker-compose.yaml на сервер
+  - Копируйте файл nginx/default.conf на сервер
+  - Клонируйте проект на сервер
+- Запустите docker-compose up
+- Примените миграции командой: $ sudo docker-compose exec web python manage.py migrate
+- Создайте учетную запись администратора: $ sudo docker-compose exec web python manage.py createsuperuser
 - Соберите статику командой: $ docker-compose exec web python manage.py collectstatic --no-input
 ## Авторы
 - https://github.com/ZakonGyka
