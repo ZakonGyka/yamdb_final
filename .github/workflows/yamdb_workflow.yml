@@ -32,9 +32,8 @@ jobs:
         python -m flake8
         # cd api_yamdb/
         # запустить написанные разработчиком тесты
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
         pytest
-         with:
-          SECRET_KEY: ${{ secrets.SECRET_KEY }} 
   build_and_push_to_docker_hub:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
